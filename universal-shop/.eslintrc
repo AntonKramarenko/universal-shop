@@ -9,7 +9,7 @@
         "jsx-quotes": ["warn", "prefer-single"],
 
         //Ident https://eslint.org/docs/latest/rules/indent#js-toc-label
-        // "indent": ["warn", "tab"],
+        "indent": ["warn", "tab"],
 
         // Semi https://eslint.org/docs/latest/rules/semi#js-toc-label
         "semi": ["warn", "always"],
