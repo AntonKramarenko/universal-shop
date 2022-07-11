@@ -1,0 +1,26 @@
+@import '../../../styles/colors.scss';
+.thingAttributes{
+    margin: 30px 0 30px 0;
+    
+    &__name{
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: $font-paragraph;
+        margin-bottom: 8px;
+    }
+
+    &__items{
+        display: flex;
+        div{
+            border: 1px solid $color-primary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 63px;
+            height: 45px;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+    } 
+}

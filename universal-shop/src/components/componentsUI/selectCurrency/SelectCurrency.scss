@@ -1,0 +1,51 @@
+@import '../../../styles/colors.scss';
+.selectCurrency{
+    position: relative;
+    width: 70px;
+    cursor: pointer;
+
+    &__header{
+        font-size: 1.1rem;
+        font-weight: 500;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__icon{
+        margin-left: 5px;
+    }
+    
+    &__title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__body{
+        box-shadow: $shadow;
+        display: none;
+        top: 30px;
+        left: 0;
+        width: 114px;
+        position: absolute;
+
+        span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 8px  0;
+        }
+
+        span:hover{
+           background-color:  $color-hover-light
+        }
+    }
+
+    &__body-active{
+        display: block;
+    }
+}
