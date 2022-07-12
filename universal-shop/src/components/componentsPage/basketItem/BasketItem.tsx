@@ -1,8 +1,8 @@
-import { AnyMap } from 'immer/dist/internal';
-import React, { useEffect, useState } from 'react';
+
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCountItem } from '../../../store/basket';
-import { IAttributeSet, IPrice } from '../../../types';
+import {  IPrice } from '../../../types';
 import { BasketItemImage } from '../../componentsUI/basketItemImage/BasketItemImage';
 import { BusketItemCount } from '../../componentsUI/busketItemCount/BusketItemCount';
 import { ThingColors } from '../../componentsUI/thingColors/ThingColors';
