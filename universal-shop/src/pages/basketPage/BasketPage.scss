@@ -1,0 +1,28 @@
+@import '../../styles/colors.scss';
+
+.basketPage{
+
+    &__title{
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin: 80px 0 55px 0;
+    }
+    &__things-box{
+        border-top: 1px solid  $color-primary-midl;
+        border-bottom: 1px solid  $color-primary-midl;
+        height: 60vh;
+        overflow: scroll;
+    }
+
+    &__bottom{
+        width: 280px;
+        margin-top: 24px;
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        span{
+            margin-bottom: 8px;
+        }
+    }
+}

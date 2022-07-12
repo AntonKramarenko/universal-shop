@@ -8,6 +8,7 @@ import { ICategory } from './types';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { CategoryPage } from './pages/CategoryPage/CategoryPage';
 import { ProductPage } from './pages/productPage/ProductPage';
+import { BasketPage } from './pages/basketPage/BasketPage';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
       {categories.length && <Header categoryLinks={categories}/>}
       <Routes>
         {routes}
+        <Route path="/basket" element={<BasketPage/>}/>
       </Routes>
     </div>
   );

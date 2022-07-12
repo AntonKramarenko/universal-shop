@@ -1,0 +1,25 @@
+.basketItem{
+    margin: 24px 0;
+    display: flex;
+    justify-content: space-between;
+
+    &__title{
+        font-size: 1.9rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    &__sub-title{
+        font-weight: 400;
+        font-size: 1.9rem;
+    }
+
+    &__price{
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 20px 0;
+    }
+
+    &__right{
+        display: flex;
+    }
+}

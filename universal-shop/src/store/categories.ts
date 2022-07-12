@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ICategory } from '../types';
 
 
-const initialState: ICategory[] =[]
+const initialState: ICategory[] = []
 
 const categoriesSlice = createSlice({
     name: 'categories',

@@ -1,0 +1,57 @@
+.basketItemImage{
+    display: flex;
+
+    &__counts{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.7rem;
+        font-weight: 300;
+        margin-right: 24px;
+       
+    }
+
+    &__count{
+        font-size: 2.5rem;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+    }
+
+    &__img{
+        width: 200px;
+        overflow: hidden;
+        position: relative;
+
+        &-changers{
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            display: flex;
+            gap:8px
+        }
+
+        &-changer{
+            cursor: pointer;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            background-color: rgba(0, 0, 0, 0.73);
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+    }
+}

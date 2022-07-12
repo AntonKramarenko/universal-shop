@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const CATEGORY_PRODUCTS = (title:string) => gql`
 query{
