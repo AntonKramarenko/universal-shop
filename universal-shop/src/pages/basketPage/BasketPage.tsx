@@ -3,6 +3,7 @@ import { BasketItem } from '../../components/componentsPage/basketItem/BasketIte
 import { useSelector } from 'react-redux';
 import { Button } from '../../components/componentsUI/button/Button';
 import './BasketPage.scss';
+import { BasketEmpty } from '../../components/componentsUI/basketEmpty/BasketEmpty';
 
 export const BasketPage: React.FC = () => {
 	const basket = useSelector((state:any) => state.basket);
@@ -36,7 +37,7 @@ export const BasketPage: React.FC = () => {
 			<div className='basketPage__things-box'>
 				{basket.length 
 					? basket.map(item => {return <BasketItem key={item.id} {...item}/>;})
-					:<div>Basket empty</div>
+					:<BasketEmpty/>
 				}
 			</div>
 			<div className='basketPage__bottom'>

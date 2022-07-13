@@ -51,7 +51,6 @@ const basketSlice = createSlice({
 				if (!isCopy) {
 					newState.push(action.payload);
 				}
-
 				return newState;
 			} else {
 				state.push(action.payload);
@@ -100,10 +99,12 @@ const basketSlice = createSlice({
 				}
 			}
 			return newState;
-			
+		},
+		addToBasketFromLocalStorage(state, action){
+			return action.payload
 		}
 	}
 });
 
-export const { addThingToBasket, changeCountItem,changeAttributesItem } = basketSlice.actions;
+export const { addThingToBasket, changeCountItem,changeAttributesItem,addToBasketFromLocalStorage } = basketSlice.actions;
 export default basketSlice.reducer;
