@@ -14,9 +14,8 @@ export const Header: React.FC <IHeader> = ({categoryLinks}) => {
 	const [ isVisibleBackground,setIsVisibleBackground ] = useState<boolean>(false);
 	const category:JSX.Element[] = categoryLinks.map((category:ICategory)=> {
 		return ( 
-			<li className='header__link'>
+			<li className='header__link' key={`${ category.name }${ category.__typename }`} >
 				<NavLink 
-					key={`/${ category.name }`} 
 					to={`/${ category.name }`} 
 				> 
 					{category.name}
@@ -33,7 +32,7 @@ export const Header: React.FC <IHeader> = ({categoryLinks}) => {
 				</ul>
 			</nav>
 			<div className='header__logo'>
-				<NavLink to='/'><img src={Logo} alt='Shop logo'/> </NavLink> 
+				<NavLink key='logo'to='/'><img src={Logo} alt='Shop logo'/> </NavLink> 
 			</div>
 			<div className='header__actions'>
 				{isVisibleBackground? <div className='background'  onClick={()=> setIsVisibleBackground(!isVisibleBackground)}/>: null}

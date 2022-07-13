@@ -28,18 +28,18 @@ function App() {
 	const routes = categories.map((category:ICategory, index:number) => {
 		if(index === 0){
 			return (
-				<>
+				<React.Fragment key={`${ category.name }`} >
 					<Route key={`/${ category.name }`}  path={`/${ category.name }`}  element={<CategoryPage categoryName={category.name} />} />
-					<Route key={`/${ category.name }`}  path={`/${ category.name }/:id`}  element={<ProductPage/>} />
-					<Route path='*' key={`/${ category.name }${ index }`}  element={ <Navigate to={`/${ category.name }`} /> } />
-				</>
+					<Route key={`/${ category.name }-${ index }`}  path={`/${ category.name }/:id`}  element={<ProductPage/>} />
+					<Route path='*' key={'Navigate'}  element={ <Navigate to={`/${ category.name }`} /> } />
+				</React.Fragment>
 			);
 		}else {
 			return (
-				<>
+				<React.Fragment key={`${ category.name }${ index }`}>
 					<Route key={`/${ category.name }`}  path={`/${ category.name }`}  element={<CategoryPage categoryName={category.name}/>} />
 					<Route key={`/${ category.name }${ index }`} path={`/${ category.name }/:id`}  element={<ProductPage/>} />
-				</>
+				</React.Fragment>
 			);
 		}
 	});
