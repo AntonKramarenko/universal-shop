@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { Button } from '../../components/componentsUI/button/Button';
 import './BasketPage.scss';
 import { BasketEmpty } from '../../components/componentsUI/basketEmpty/BasketEmpty';
+import { IState } from '../../types';
 
 export const BasketPage: React.FC = () => {
 	const basket = useSelector((state:any) => state.basket);
-	const currentCurrency = useSelector((state:any) => state.currency);
+	const currentCurrency = useSelector((state:IState) => state.currency);
 	const [ total, setTotal ]=useState(0);
 	const [taxValue, setTax] =useState(0)
 	const [ countItems,setCountItems ] = useState(0);
@@ -16,6 +17,7 @@ export const BasketPage: React.FC = () => {
 		setCountItems(basket.reduce((prev:number, curr) => prev + curr.count,0)	);
 		currentTotal();
 		cuurentTax()
+		// eslint-disable-next-line
 	},[ basket,total,currentCurrency ]);
 
 	const currentTotal =()=>{

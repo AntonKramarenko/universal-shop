@@ -28,6 +28,6 @@
 
         // No console or debugger in push
         "no-console": ["warn"],
-        "no-debugger": ["warn"]
+        "no-debugger": ["warn"],
     }
 }

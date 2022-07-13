@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { addCategories } from './store/categories';
 import { GET_ALL_CATEGORIES } from './query/getCategoryQuery';
-import { ICategory } from './types';
+import { ICategory, IState } from './types';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { CategoryPage } from './pages/CategoryPage/CategoryPage';
 import { ProductPage } from './pages/productPage/ProductPage';
@@ -15,13 +15,14 @@ function App() {
 	const dispatch = useDispatch();
 	const {data, loading, error} = useQuery(GET_ALL_CATEGORIES);
 	const [ load, setLoad ] = useState<boolean>(true);
-	const categories:ICategory[]  = useSelector((state:any)  => state.categories);
+	const categories:ICategory[]  = useSelector((state:IState)  => state.categories);
 
 	useEffect(()=>{
 		if(!loading){
 			dispatch(addCategories(data.categories)); 
 			setLoad(false);
 		}
+		// eslint-disable-next-line
 	},[ loading ]);
 
 	const routes = categories.map((category:ICategory, index:number) => {

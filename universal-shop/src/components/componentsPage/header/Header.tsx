@@ -3,6 +3,7 @@ import { ICategory } from '../../../types';
 import Logo from '../../../assets/img/header_logo.png';
 import { SelectCurrency } from '../../componentsUI/selectCurrency/SelectCurrency';
 import { Basket } from '../basket/Basket';
+import { useState } from 'react';
 import './Header.scss';
 
 interface IHeader {
@@ -10,7 +11,7 @@ interface IHeader {
 }
 
 export const Header: React.FC <IHeader> = ({categoryLinks}) => {
-
+	const [ isVisibleBackground,setIsVisibleBackground ] = useState<boolean>(false);
 	const category:JSX.Element[] = categoryLinks.map((category:ICategory)=> {
 		return ( 
 			<li className='header__link'>
@@ -35,8 +36,9 @@ export const Header: React.FC <IHeader> = ({categoryLinks}) => {
 				<NavLink to='/'><img src={Logo} alt='Shop logo'/> </NavLink> 
 			</div>
 			<div className='header__actions'>
-				<SelectCurrency/>
-				<Basket/>
+				{isVisibleBackground? <div className='background'  onClick={()=> setIsVisibleBackground(!isVisibleBackground)}/>: null}
+				<SelectCurrency />
+				<Basket setIsVisibleBackground={setIsVisibleBackground} isVisibleBackground={isVisibleBackground}/>
 			</div>
 		</header>
 	);

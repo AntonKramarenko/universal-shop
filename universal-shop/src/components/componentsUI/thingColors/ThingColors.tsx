@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './ThingColors.scss';
 
 
@@ -34,7 +34,7 @@ export const ThingColors:React.FC<IThingColors> = ({nameAttribute, items,current
 							{...currentAttributes,
 								[nameAttribute] : item.id}
 						)}
-					></div>;
+					/>;
 				})}
 			</div>
 		</div>

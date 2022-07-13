@@ -25,10 +25,12 @@
     &__body{
         box-shadow: $shadow;
         display: none;
-        top: 30px;
+        top: 50px;
         left: 0;
         width: 114px;
         position: absolute;
+        z-index: 20;
+        background-color: #fff;
 
         span{
             display: flex;

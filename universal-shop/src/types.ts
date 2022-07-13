@@ -16,14 +16,15 @@ export interface IPrice {
 export interface IAttribute {
     displayValue: string
     value: string
-    id:string
+    id:string,
+    __typename:string
   }
 
 export interface IAttributeSet {
     id: string,
     name: string
     type: string
-    items: [IAttribute]
+    items: IAttribute[]
   }
 
 export interface IProduct{
@@ -36,4 +37,11 @@ export interface IProduct{
     attributes: [IAttributeSet],
     prices: [IPrice],
     brand: string,
+}
+
+export interface IState {
+  basket: IProduct[],
+  categories: ICategory[],
+  categoryProducts: any,
+  currency:ICurrency
 }

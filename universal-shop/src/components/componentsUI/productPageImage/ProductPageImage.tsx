@@ -8,8 +8,6 @@ interface IProductPagesImage{
 export const ProductPageImage: React.FC<IProductPagesImage> = (gallery) => {
   const [currentImg,setCurrentImg]= useState(gallery.gallery[0])
   
-
-  
   return (
     <div className='productPageImage'>
       <div className="productPageImage__selectImgs">

@@ -1,19 +1,18 @@
 import './BoardItem.scss';
-import { IProduct } from '../../../types';
+import { IProduct, IState } from '../../../types';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {IPrice} from '../../../types'
+import {IPrice} from '../../../types';
 
 interface IBoardItem{
     product:IProduct
 }
 
 export const BoardItem: React.FC<IBoardItem> = (product) => {
-	const currentCurrency = useSelector((state:any) => state.currency);
+	const currentCurrency = useSelector((state:IState) => state.currency);
 	const {id, inStock, name, prices,category} = product.product;
 	const navigate = useNavigate();
 
-  
 	const priceItem = prices.map((item:IPrice) => {
 		if(item.currency.label === currentCurrency.label){
 			return  `${ item.currency.symbol } ${ item.amount }`;
@@ -24,7 +23,7 @@ export const BoardItem: React.FC<IBoardItem> = (product) => {
 			className={inStock ? 'boardItem' : 'boardItem outOfStock'}
 			onClick={()=> navigate(`/${ category }/${ id }`) }>
 			<div className='boardItem__img'>
-				{!inStock ? <div className='boardItem__img-outOfStock'>OUT OF STOCK</div>: null}
+				{!inStock ? <div className='boardItem__img-outOfStock'>OUT OF STOCK</div> : null}
 				<img src={product.product.gallery[0]} alt='product' />
 			</div>
 			<div className='boardItem__content'>

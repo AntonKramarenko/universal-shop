@@ -38,8 +38,19 @@
         }
     }
 
-
     &__actions{
         display: flex;
+    }
+
+    .background{
+        background-color: rgba(57, 55, 72, 0.22);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 80px;
+        width: 100vw;
+       height: 100vh;
+       z-index: 10;
     }
 }

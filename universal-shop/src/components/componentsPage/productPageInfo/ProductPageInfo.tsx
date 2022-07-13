@@ -7,15 +7,12 @@ import { ThingColors } from '../../componentsUI/thingColors/ThingColors';
 import { ThingAttributes } from '../../componentsUI/thinkAttributes/ThingAttributes';
 import './ProductPageInfo.scss';
 
-
-
 interface IAtribut {
     displayValue:string,
     id:string,
     value:string,
     __typename:string
 }
-
 
 interface IAttributes {
     id:string,
@@ -38,7 +35,7 @@ interface IProductPageInfo{
 export const ProductPageInfo: React.FC<IProductPageInfo> = (props) => {
 	const {attributes,brand,description,id, inStock,name,prices,gallery} = props;
 	const currentCurrency = useSelector((state:any) => state.currency);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const [ currentAttributes, setCurrentAttributes ] = useState({});
 	
 	const priceItem = prices.map((item:any) => {
@@ -48,6 +45,7 @@ export const ProductPageInfo: React.FC<IProductPageInfo> = (props) => {
 
 	useEffect(()=>{
 		startSelectAttributes(attributes);
+		// eslint-disable-next-line
 	},[]);
 
 	const startSelectAttributes =(attributes)=>{
@@ -57,17 +55,14 @@ export const ProductPageInfo: React.FC<IProductPageInfo> = (props) => {
 		});
 		setCurrentAttributes(startAttributes);		
 	};
-	
-
 
 	const basketAddHandler =()=>{
 		let thingId =id+'-'+ Object.values(currentAttributes).join('-');
-		let thingValues={id: thingId,name:name,brand:brand,count: 1,selectAttributes: currentAttributes,attributes: attributes,inStock:inStock,prices:prices,gallery:gallery}
+		let thingValues={id: thingId,name:name,brand:brand,count: 1,selectAttributes: currentAttributes,attributes: attributes,inStock:inStock,prices:prices,gallery:gallery};
 
-		dispatch(addThingToBasket(thingValues))
-	}
+		dispatch(addThingToBasket(thingValues));
+	};
 	
-    
 	return (
 		<div className='productPageInfo'>
 			<h3 className='productPageInfo__title'>{brand}</h3>
