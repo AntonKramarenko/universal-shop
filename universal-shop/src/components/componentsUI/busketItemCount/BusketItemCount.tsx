@@ -1,5 +1,5 @@
 import React from 'react';
-import './BusketItemCount.scss'
+import './BusketItemCount.scss';
 
 interface IBusketItemCount{
 	value:number,

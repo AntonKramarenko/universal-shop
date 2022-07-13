@@ -1,7 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCountItem } from '../../../store/basket';
+import { changeAttributesItem, changeCountItem } from '../../../store/basket';
 import {  IPrice } from '../../../types';
 import { BasketItemImage } from '../../componentsUI/basketItemImage/BasketItemImage';
 import { BusketItemCount } from '../../componentsUI/busketItemCount/BusketItemCount';
@@ -38,21 +38,29 @@ interface IBasketItem{
 export const BasketItem: React.FC<IBasketItem> = (props) => {
 	const {id,name, brand,gallery,attributes,prices,selectAttributes,count} = props;
 	const currentCurrency = useSelector((state:any) => state.currency);
-	const basket = useSelector((state:any) => state.basket);
 	const [ currentAttributes, setCurrentAttributes ] = useState(selectAttributes);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
+
+	useEffect(()=>{
+		changeAttributesHandler();
+		// eslint-disable-next-line 
+	},[ currentAttributes ]);
 
     
 	const priceItem = prices.map((item:any) => {
 		if(item.currency.label === currentCurrency.label){
-			return  `${ item.currency.symbol } ${ item.amount }`;
+			return  `${ item.currency.symbol } ${ (item.amount* count).toFixed(2) }`;
 		}});
 
-
 	const setItemCountHandler =(value:number)=>{
-		dispatch(changeCountItem({id: id, count: value}))
+		dispatch(changeCountItem({id: id, count: value}));
 	};
 
+	const changeAttributesHandler =()=>{
+		let currentId = id.split('-').slice( 0 , -(Object.values(currentAttributes).length)).join('-');
+		let newThingId =currentId+'-'+ Object.values(currentAttributes).join('-');
+		dispatch(changeAttributesItem({id:id,newId:newThingId,currentAttributes:currentAttributes,count:count}));
+	};
 	return (
 		<div className='basketItem'>
 			<div className='basketItem__info'>

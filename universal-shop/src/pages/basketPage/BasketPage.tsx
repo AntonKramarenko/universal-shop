@@ -1,11 +1,34 @@
-import React from 'react';
-import './BasketPage.scss';
+import React, { useEffect, useState } from 'react';
 import { BasketItem } from '../../components/componentsPage/basketItem/BasketItem';
 import { useSelector } from 'react-redux';
 import { Button } from '../../components/componentsUI/button/Button';
+import './BasketPage.scss';
 
 export const BasketPage: React.FC = () => {
 	const basket = useSelector((state:any) => state.basket);
+	const currentCurrency = useSelector((state:any) => state.currency);
+	const [ total, setTotal ]=useState(0);
+	const [taxValue, setTax] =useState(0)
+	const [ countItems,setCountItems ] = useState(0);
+
+	useEffect(()=>{
+		setCountItems(basket.reduce((prev:number, curr) => prev + curr.count,0)	);
+		currentTotal();
+		cuurentTax()
+	},[ basket,total,currentCurrency ]);
+
+	const currentTotal =()=>{
+		let total:number = 0;
+		basket.map(item=>{
+			const price = item.prices.filter(item => {if(item.currency.label === currentCurrency.label)return item.amount;});
+			total =total + price[0].amount * item.count;
+		});
+		setTotal(total);
+	};
+
+	const cuurentTax =()=>{
+		setTax((total/100)* 21)
+	}
 	
 	return (
 		<div className='basketPage'>
@@ -17,9 +40,9 @@ export const BasketPage: React.FC = () => {
 				}
 			</div>
 			<div className='basketPage__bottom'>
-				<span className='basketPage__tax'>Tax 21%: <b>$42.00</b></span>
-				<span className='basketPage__quantity'>Quantity: <b>{basket.length}</b></span>
-				<span className='basketPage__total'>Total:  <b>$402.00</b></span>
+				<span className='basketPage__tax'>Tax 21%: <b>{currentCurrency.symbol}{(taxValue.toFixed(2))}</b></span>
+				<span className='basketPage__quantity'>Quantity: <b>{countItems}</b></span>
+				<span className='basketPage__total'>Total:  <b>{currentCurrency.symbol}{(total).toFixed(2)}</b></span>
 				<Button activeBtn={basket.length } click={()=> alert(1) } nameButton='order'/>
 			</div>
 		</div>
