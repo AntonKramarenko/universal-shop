@@ -1,1 +1,1 @@
-export const REQUEST_URL = 'http://localhost:4000/'
+export const REQUEST_URL = 'http://localhost:4000/';
